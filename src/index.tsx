@@ -113,6 +113,7 @@ type Props = {
   onOpenEnd?: () => void
   onCloseStart?: () => void
   onCloseEnd?: () => void
+  getCurrentSnapPoint?: (index:number) => void
   callbackThreshold?: number
   borderRadius?: number
   overflow?: 'visible' | 'hidden'
@@ -684,7 +685,7 @@ export default class BottomSheetBehavior extends React.Component<Props, State> {
     if (!this.props.enabledImperativeSnapping) {
       return
     }
-
+    this.props.getCurrentSnapPoint(index)
     this.isManuallySetValue.setValue(1)
     this.manuallySetValue.setValue(
       // @ts-ignore
